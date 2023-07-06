@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState, useCallback, ChangeEvent } from 'react'
+import NameInput from 'component/NameInput'
+import ChatBox from 'component/ChatBox'
+import { Box } from '@mui/material'
 
 function App() {
+  const [name, setName] = useState('')
+  const changeName = useCallback((value: string) => {
+    setName(value)
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Box sx={{ height: '100vh', minHeight: 300 }}>
+      <NameInput changeName={changeName} />
+      <ChatBox userName={name} />
+    </Box>
+  )
 }
 
-export default App;
+export default App
