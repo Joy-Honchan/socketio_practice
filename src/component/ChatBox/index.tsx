@@ -10,7 +10,13 @@ interface PropsType {
 export default function index({ userName }: PropsType) {
   return (
     <Box
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{
+        height: '100vh',
+        minHeight: 300,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
     >
       <Paper sx={{ margin: 5, width: 600 }}>
         <AppBar />

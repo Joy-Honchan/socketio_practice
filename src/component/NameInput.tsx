@@ -4,7 +4,8 @@ import { keyframes } from '@emotion/react'
 
 const shrinkUp = keyframes`
     to {
-        height: 150px
+        height: 0;
+        transform: translateY(-30px);
     }
 `
 export default function NameInput({
@@ -37,9 +38,15 @@ export default function NameInput({
         onChange={handleOnchange}
         label="Please Enter Your Name"
         variant="outlined"
+        disabled={shouldShrink}
       />
       <Box>
-        <Button variant="contained" onClick={handleClick} sx={{ ml: 1 }}>
+        <Button
+          disabled={shouldShrink}
+          variant="contained"
+          onClick={handleClick}
+          sx={{ ml: 1 }}
+        >
           Start a Chat
         </Button>
       </Box>
