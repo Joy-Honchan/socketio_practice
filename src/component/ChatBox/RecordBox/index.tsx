@@ -1,43 +1,9 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import { Grid, Paper, Typography, Box } from '@mui/material'
 import TextRec from './TextRec'
 import { MsgType } from './type'
-import SocketContext from 'context/socketContext'
 
-export default function RecordBox() {
-  const socket = useContext(SocketContext)
-  const [msgList, setmsgList] = useState<MsgType[]>([
-    {
-      type: 0,
-      message: 'hello'
-    },
-    {
-      type: 1,
-      userName: 'hello',
-      time: 'hello',
-      message: 'Lorem'
-    }
-    // {
-    //   type: 2,
-    //   userName: 'hello',
-    //   time: 'hello',
-    //   message:
-    //     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci quaerat reiciendis architecto, illo dolorum laudantium provident omnis laborum distinctio accusamus debitis id, nihil error excepturi enim officiis dicta quas.'
-    // }
-  ])
-
-  useEffect(() => {
-    function onGetNewMsg(msg: MsgType) {
-      setmsgList((prev) => {
-        return [...prev, msg]
-      })
-    }
-    socket?.on('server_send_msg', onGetNewMsg)
-
-    return () => {
-      socket?.off('server_send_msg', onGetNewMsg)
-    }
-  }, [socket])
+export default function RecordBox({ msgList }: { msgList: MsgType[] }) {
   return (
     <Box sx={{ height: '500px', overflowY: 'auto' }}>
       {msgList.map((msg, index) => {

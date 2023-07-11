@@ -4,7 +4,7 @@ interface AnnouncementType {
 }
 
 export interface ConversationType {
-    type: 1 | 2 // 1:sent msg 2:received msg
+    type: 1 | 2 // 1:received msg 2:sent msg
     userName: string
     time: string
     message: string

@@ -1,8 +1,9 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import NameInput from 'component/NameInput'
 import ChatBox from 'component/ChatBox'
-import { Box, Button, Typography } from '@mui/material'
-import SocketContext, { socket } from 'context/socketContext'
+import { Box } from '@mui/material'
+import SocketContext, { socket } from 'context/SocketContext'
+import UserNameContext from 'context/UserNameContext'
 
 function App() {
   const [name, setName] = useState('')
@@ -11,10 +12,12 @@ function App() {
   }, [])
   return (
     <SocketContext.Provider value={socket}>
-      <Box sx={{ height: '100vh', minHeight: 300 }}>
-        <NameInput changeName={changeName} />
-        {name && <ChatBox userName={name} />}
-      </Box>
+      <UserNameContext.Provider value={name}>
+        <Box sx={{ height: '100vh', minHeight: 300 }}>
+          <NameInput changeName={changeName} />
+          {name && <ChatBox />}
+        </Box>
+      </UserNameContext.Provider>
     </SocketContext.Provider>
   )
 }

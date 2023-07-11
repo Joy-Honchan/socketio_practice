@@ -1,7 +1,7 @@
 import { ChangeEvent, useState, useContext } from 'react'
 import { TextField, Button, Box } from '@mui/material'
 import { keyframes } from '@emotion/react'
-import SocketContext from 'context/socketContext'
+import SocketContext from 'context/SocketContext'
 
 const shrinkUp = keyframes`
     to {

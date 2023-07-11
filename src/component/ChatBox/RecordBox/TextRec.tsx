@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from '@mui/material'
-import { MsgType, ConversationType } from './type'
+import { ConversationType } from './type'
 
 export default function TextRec({
   msgData,

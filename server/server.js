@@ -38,6 +38,15 @@ io.on('connection', (socket) => {
     })
   })
 
+  socket.on('client_send_msg', (msgData) => {
+    socket.broadcast.emit('server_send_msg', {
+      type: 1,
+      userName: msgData.userName,
+      time: msgData.time,
+      message: msgData.message
+    })
+  })
+
   socket.on('disconnect', () => {
     console.log(`${socket.id} is disconnected`)
   })
