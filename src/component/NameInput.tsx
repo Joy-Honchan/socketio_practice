@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useState, useContext } from 'react'
 import { TextField, Button, Box } from '@mui/material'
 import { keyframes } from '@emotion/react'
+import SocketContext from 'context/socketContext'
 
 const shrinkUp = keyframes`
     to {
@@ -13,8 +14,10 @@ export default function NameInput({
 }: {
   changeName: (value: string) => void
 }) {
+  const socket = useContext(SocketContext)
   const [nameInput, setNameInput] = useState('')
   const [shouldShrink, setShouldShrink] = useState(false)
+
   const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     setNameInput(e.target.value)
   }
@@ -22,6 +25,7 @@ export default function NameInput({
     if (!nameInput) return
     changeName(nameInput)
     setShouldShrink(true)
+    socket?.emit('client_add_name', nameInput)
   }
   return (
     <Box
@@ -31,7 +35,7 @@ export default function NameInput({
         alignItems: 'center',
         // bgcolor: 'pink',
         height: '100%',
-        ...(shouldShrink && { animation: `${shrinkUp} 0.5s forwards` })
+        ...(shouldShrink && { animation: `${shrinkUp} .5s forwards` })
       }}
     >
       <TextField

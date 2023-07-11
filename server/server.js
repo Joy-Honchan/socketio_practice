@@ -18,7 +18,7 @@ app.use(cors())
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3005/',
+    origin: 'http://localhost:3005',
     methods: ['GET', 'POST']
   }
 })
@@ -30,7 +30,15 @@ server.listen(8080, () => {
 io.on('connection', (socket) => {
   console.log(`${socket.id} is connected`)
 
-  socket.on('disconnect', (socket) => {
+  socket.on('client_add_name', (name) => {
+    console.log(`${name} just joined the chat`)
+    io.emit('server_send_msg', {
+      type: 0,
+      message: `${name} just joined the chat`
+    })
+  })
+
+  socket.on('disconnect', () => {
     console.log(`${socket.id} is disconnected`)
   })
 })

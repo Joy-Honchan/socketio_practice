@@ -1,11 +1,11 @@
 import { Box, Paper, Typography } from '@mui/material'
-import { MsgType } from './type'
+import { MsgType, ConversationType } from './type'
 
 export default function TextRec({
   msgData,
   bgColor
 }: {
-  msgData: MsgType
+  msgData: ConversationType
   bgColor: string
 }) {
   return (
