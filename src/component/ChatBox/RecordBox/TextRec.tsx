@@ -11,7 +11,7 @@ export default function TextRec({
   return (
     <Box>
       <Typography variant="h6">{msgData.userName}</Typography>
-      <Paper sx={{ bgcolor: bgColor, display: 'inline-block', padding: 1 }}>
+      <Paper sx={{ bgcolor: bgColor, display: 'inline-block', padding: 1.5 }}>
         <Typography color={'white'}>{msgData.message}</Typography>
       </Paper>
       <Typography variant="body1">{msgData.time}</Typography>
