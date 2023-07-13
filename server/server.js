@@ -12,13 +12,18 @@ const app = express()
 const http = require('http')
 const cors = require('cors')
 
+require('dotenv').config()
+
 const { Server } = require('socket.io')
 
 app.use(cors())
 const server = http.createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3005',
+    origin: [
+      'http://localhost:3005',
+      `http://${process.env.REACT_APP_IP_ADDRESS}:3005`
+    ],
     methods: ['GET', 'POST']
   }
 })
