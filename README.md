@@ -9,3 +9,17 @@ add an .env file with REACT_APP_IP_ADDRESS = 'your ip address'
 3. Open another terminal and run "npm start", it will start localhost:3005
 4. share "http:// your-ip-address:3005" with your friends who connects the same network with you
 5. Have fun with the Chat App
+
+## Demo
+
+### Landing Page
+
+![landing-image](src/asset/readme/socket-practice-typing-effect.gif)
+
+### Enter User Name
+
+![Enter-user-name](src/asset/readme/socket-practice-user-enter.gif)
+
+### Chatting
+
+![Chatting](src/asset/readme/socket-practice-chatting.gif)
