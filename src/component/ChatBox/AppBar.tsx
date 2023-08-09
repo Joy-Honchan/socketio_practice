@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppBar as MuiAppBar, Toolbar } from '@mui/material'
-import { Person } from '@mui/icons-material'
+import { Chat } from '@mui/icons-material'
 
 export default function AppBar() {
   return (
@@ -9,8 +9,8 @@ export default function AppBar() {
       sx={{ borderTopLeftRadius: 4, borderTopRightRadius: 4 }}
     >
       <Toolbar>
-        <Person />
-        SomeOne
+        <Chat sx={{ paddingRight: 1 }} />
+        Live Chat
       </Toolbar>
     </MuiAppBar>
   )
